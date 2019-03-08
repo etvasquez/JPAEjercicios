@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios" xmlns:intf="http://servicios" xmlns:tns1="http://entidades" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://servicios" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://entidades"/>
+   <element name="CrearEmpleado">
+    <complexType>
+     <sequence>
+      <element name="empleado" type="tns1:empleado"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="CrearEmpleadoResponse">
+    <complexType/>
+   </element>
+   <element name="ActualizarEmpleado">
+    <complexType>
+     <sequence>
+      <element name="iden" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ActualizarEmpleadoResponse">
+    <complexType/>
+   </element>
+   <element name="PresentarEmpleados">
+    <complexType/>
+   </element>
+   <element name="PresentarEmpleadosResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://entidades" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="empleado">
+    <sequence>
+     <element name="deg" nillable="true" type="xsd:string"/>
+     <element name="identificador" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="salario" type="xsd:double"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="CrearEmpleadoRequest">
+
+      <wsdl:part element="impl:CrearEmpleado" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ActualizarEmpleadoResponse">
+
+      <wsdl:part element="impl:ActualizarEmpleadoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="CrearEmpleadoResponse">
+
+      <wsdl:part element="impl:CrearEmpleadoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PresentarEmpleadosRequest">
+
+      <wsdl:part element="impl:PresentarEmpleados" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PresentarEmpleadosResponse">
+
+      <wsdl:part element="impl:PresentarEmpleadosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ActualizarEmpleadoRequest">
+
+      <wsdl:part element="impl:ActualizarEmpleado" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CRUDEmpledo">
+
+      <wsdl:operation name="CrearEmpleado">
+
+         <wsdl:input message="impl:CrearEmpleadoRequest" name="CrearEmpleadoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:CrearEmpleadoResponse" name="CrearEmpleadoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ActualizarEmpleado">
+
+         <wsdl:input message="impl:ActualizarEmpleadoRequest" name="ActualizarEmpleadoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ActualizarEmpleadoResponse" name="ActualizarEmpleadoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="PresentarEmpleados">
+
+         <wsdl:input message="impl:PresentarEmpleadosRequest" name="PresentarEmpleadosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:PresentarEmpleadosResponse" name="PresentarEmpleadosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CRUDEmpledoSoapBinding" type="impl:CRUDEmpledo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="CrearEmpleado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="CrearEmpleadoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="CrearEmpleadoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ActualizarEmpleado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ActualizarEmpleadoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ActualizarEmpleadoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="PresentarEmpleados">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="PresentarEmpleadosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="PresentarEmpleadosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CRUDEmpledoService">
+
+      <wsdl:port binding="impl:CRUDEmpledoSoapBinding" name="CRUDEmpledo">
+
+         <wsdlsoap:address location="http://localhost:8080/AppWeb/services/CRUDEmpledo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

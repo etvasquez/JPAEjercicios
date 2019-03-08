@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CRUDEmpledoService WSDL service -->
+
+  <service name="CRUDEmpledo" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servicios"/>
+      <parameter name="wsdlServiceElement" value="CRUDEmpledoService"/>
+      <parameter name="schemaQualified" value="http://entidades,http://servicios"/>
+      <parameter name="wsdlServicePort" value="CRUDEmpledo"/>
+      <parameter name="className" value="servicios.CRUDEmpledoSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="CRUDEmpledo"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="crearEmpleado" qname="operNS:CrearEmpleado" xmlns:operNS="http://servicios" soapAction="" >
+        <parameter qname="pns:empleado" xmlns:pns="http://servicios" type="tns:empleado" xmlns:tns="http://entidades"/>
+      </operation>
+      <operation name="actualizarEmpleado" qname="operNS:ActualizarEmpleado" xmlns:operNS="http://servicios" soapAction="" >
+        <parameter qname="pns:iden" xmlns:pns="http://servicios" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="presentarEmpleados" qname="operNS:PresentarEmpleados" xmlns:operNS="http://servicios" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="crearEmpleado actualizarEmpleado presentarEmpleados"/>
+
+      <typeMapping
+        xmlns:ns="http://entidades"
+        qname="ns:empleado"
+        type="java:entidades.Empleado"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
